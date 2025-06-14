@@ -6,7 +6,7 @@
     <meta name="description" content="Repana Yakobu - Professional Library Science Expert with extensive experience in library management and information services">
     <meta name="keywords" content="Library Science, Information Management, Library Professional, Digital Library, Research Support, Information Services">
     <meta name="author" content="Repana Yakobu">
-    <title>REPANA YAKOBU | Library Professional</title>
+    <title>🏛️ REPANA YAKOBU | Library Professional</title>
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/favicon.png">
@@ -263,7 +263,8 @@
                     formMessage.className = 'form-message sending';
 
                     try {
-                        const response = await fetch('http://127.0.0.1:5000/send_message', {
+                        // IMPORTANT: Replace this URL with your deployed Render service URL
+                        const response = await fetch('https://YOUR_RENDER_SERVICE_URL.onrender.com/send_message', {
                             method: 'POST',
                             body: formData
                         });
