@@ -6,11 +6,11 @@
     <meta name="description" content="Repana Yakobu - Professional Library Science Expert with extensive experience in library management and information services">
     <meta name="keywords" content="Library Science, Information Management, Library Professional, Digital Library, Research Support, Information Services">
     <meta name="author" content="Repana Yakobu">
-    <title>🏛️ REPANA YAKOBU | Library Professional</title>
+    <title>REPANA YAKOBU | Library Professional</title>
     
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    
+    <!-- Favicon (SVG) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%234CAF50'/><path d='M25 20h50v60H25zM75 20l-10 10V20zm0 60v-10l-10 10zm-50 0h50v-10H25z' fill='white'/><path d='M75 20L65 30V20zM75 80L65 70V80z' fill='none' stroke='white' stroke-width='2'/></svg>" type="image/svg+xml">
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -151,7 +151,7 @@
                 <div class="footer-social">
                     <a href="https://www.linkedin.com/posts/r-yakobu_opentowork-activity-7316131978578128897-11hB/" class="social-link" target="_blank"><i class="fab fa-linkedin"></i></a>
                     <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="https://github.com/Yakobu55" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -248,43 +248,20 @@
                 });
             });
 
-            // Event delegation for contact form submission
-            document.addEventListener('submit', async function(e) {
-                if (e.target && e.target.id === 'contactForm') {
-                    e.preventDefault();
+            // Show More/Show Less functionality for Experience cards
+            document.querySelectorAll('.show-more-btn').forEach(button => {
+                button.addEventListener('click', () => {
+                    const card = button.closest('.experience-card');
+                    const extraContent = card.querySelector('.extra-content');
 
-                    console.log('Contact form submission intercepted by event delegation.'); // Diagnostic log
-
-                    const contactForm = e.target; // Get the form directly from the event target
-                    const formMessage = document.getElementById('formMessage');
-                    const formData = new FormData(contactForm);
-                    
-                    formMessage.textContent = 'Sending...';
-                    formMessage.className = 'form-message sending';
-
-                    try {
-                        // IMPORTANT: Replace this URL with your deployed Render service URL
-                        const response = await fetch('https://YOUR_RENDER_SERVICE_URL.onrender.com/send_message', {
-                            method: 'POST',
-                            body: formData
-                        });
-
-                        const result = await response.json();
-
-                        if (result.success) {
-                            formMessage.textContent = result.message;
-                            formMessage.className = 'form-message success';
-                            contactForm.reset(); // Clear the form using the form reference
-                        } else {
-                            formMessage.textContent = result.message;
-                            formMessage.className = 'form-message error';
-                        }
-                    } catch (error) {
-                        formMessage.textContent = 'An error occurred. Please try again later.';
-                        formMessage.className = 'form-message error';
-                        console.error('Error sending message:', error);
+                    if (extraContent.style.display === 'none' || extraContent.style.display === '') {
+                        extraContent.style.display = 'block';
+                        button.textContent = 'Show Less';
+                    } else {
+                        extraContent.style.display = 'none';
+                        button.textContent = 'Show More';
                     }
-                }
+                });
             });
 
         });
